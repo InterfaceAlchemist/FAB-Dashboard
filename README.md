@@ -1,5 +1,22 @@
-# Vue 3 + Vite
+# FAB Dashboard
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A geospatial dashboard for **BCDA (Bases Conversion and Development Authority)** 
+built as a frontend project.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Features
+- 🗺️ Interactive GIS Map using MapLibre GL
+- 📊 Data visualizations
+- 🔍 Search history feature
+- 📍 Navigation sites
+
+## Built With
+- Vue 3
+- Vite
+- MapLibre GL JS
+- Tailwind CSS
+
+## Setup
+1. Clone the repository
+2. Run `npm install`
+3. Run `npm run dev`
+4. Open `localhost:5173` in your browser
