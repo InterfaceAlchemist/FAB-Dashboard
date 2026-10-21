@@ -2,7 +2,7 @@
 import { ref, computed, watch } from "vue";
 // CHANGE 1: Removed 6 static file imports — data now comes from the real API.
 // Added axios to make HTTP requests (same as what Postman does, but from code).
-import axios from "axios";
+import { getSitesByCategory } from "../services/sitesData.js";
 
 const props = defineProps([
   "activeTab",
@@ -130,15 +130,13 @@ function groupBySubcategory(apiData) {
 //             4=AFP Modernization, 5=Investments, 6=Sustainability
 // targetRef: the ref variable to fill (e.g. economicZones, locatorsData, etc.)
 async function fetchCategory(tabName, categoryId, targetRef) {
-  // Skip if we already loaded this tab — avoids duplicate API calls
+  // Skip if we already loaded this tab — avoids duplicate loads
   if (loadedTabs.value.includes(tabName)) return;
 
   try {
-    const response = await axios.get(
-      `https://bcda.itbsstudio.com/BCDA/api/sites/filter?category_id=${categoryId}`,
-    );
+    const sites = await getSitesByCategory(categoryId);
     // Transform flat array → grouped zones, then store in the ref
-    targetRef.value = groupBySubcategory(response.data.data);
+    targetRef.value = groupBySubcategory(sites);
     // Mark this tab as loaded so we don't fetch it again
     loadedTabs.value.push(tabName);
   } catch (error) {

@@ -5,8 +5,8 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 // Form state
-const username = ref("");
-const password = ref("");
+const username = ref("demo");
+const password = ref("demo123");
 const showPassword = ref(false);
 const errorMessage = ref("");
 const isLoading = ref(false);

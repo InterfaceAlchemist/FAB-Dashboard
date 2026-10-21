@@ -4,7 +4,7 @@
 import { ref, watch, computed } from "vue";
 
 // Import axios for making HTTP requests to fetch site data from the API
-import api from "../axios-test/axiosInstance.js";
+import { getAllSites } from "../services/sitesData.js";
 
 // Import the MapView component which will display the interactive map in the main content area
 import MapView from "../components/MapView.vue";
@@ -180,9 +180,7 @@ watch(checkedFeatures, (features) => {
 // We use the api instance which already has the auth token in headers, so we don't need to worry about authentication here.
 async function fetchAllSites() {
   try {
-    // Using api instance which has the auth token in headers
-    const response = await api.get("/sites");
-    allSites.value = response.data.data;
+    allSites.value = await getAllSites();
   } catch (error) {
     console.error("Failed to fetch all sites:", error);
   }

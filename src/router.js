@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import Login from "./views/Login.vue";
 import Dashboard from "./views/Dashboard.vue";
 
-import AxiosTest from "./axios-test/AxiosTest.vue";
 
 
 const routes = [
@@ -19,12 +18,6 @@ const routes = [
     component: Dashboard,
     meta: { requiresAuth: true }, // this route requires authentication
   },
-
-  // add this inside your routes array
-{
-  path: "/axios-test",
-  component: AxiosTest,
-}
 ];
 
 const router = createRouter({
